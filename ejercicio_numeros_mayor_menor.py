@@ -1,12 +1,22 @@
-# se declara una array vacía donde se almacenarán los números que introduzca el usuario
-numeros = []
-#Se le pide un número al usuario para introducir en la lista
-numero_usuario = int(input("Introduce un número en la lista: "))
-#se añade ese número a la array vacía
-numeros.append(numero_usuario)
-#mientras la respuesta del input sea S vuelve a preguntar y almacena el número en la array
-while input("¿Deseas introducir más números? (S/n)") == "S":
-    #Se le pide un número al usuario para introducir en la lista
-    numero_usuario = int(input("Introduce un número en la lista: "))
-    #se añade ese número a la array vacía
-    numeros.append(numero_usuario)
+#comentar
+
+
+input_usuario = input("Introduzca una lista de números separados por una coma: ")
+lista_usuario = input_usuario.split(",")
+numeros_limpios =[]
+
+for numero in lista_usuario:
+    numeros_limpios.append(int(numero))
+
+print(numeros_limpios)
+
+max_num = numeros_limpios[0]
+min_num = numeros_limpios[0]
+
+for n in numeros_limpios:
+    if n > max_num:
+        max_num = n
+    if n < min_num:
+        min_num = n
+
+print("El número más grande es: {} y el más pequeño es {}".format(max_num,min_num))
