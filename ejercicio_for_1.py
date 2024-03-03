@@ -14,7 +14,7 @@ for letra in texto_usuario:
         puntos += 1
 
 
-#print("Espacios {}".format(espacios))
+#print("Espacios: {}".format(espacios))
 #print("Puntos {}".format(puntos))
 #print("Comas {}".format(comas))
 print("Espacios: {}, Puntos: {}, Comas: {}".format(espacios, puntos, comas))
