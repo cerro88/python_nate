@@ -3,6 +3,7 @@
 #solo con la primera letra del nombre y de los apellidos en mayúscula. El usuario puede introducir su nombre combinando mayúsculas y minúsculas como quiera.
 
 nombre_usuario = input("Introduce tu nombre completo: ")
+
 print(nombre_usuario.lower())
 print(nombre_usuario.upper())
 print(nombre_usuario.title())
