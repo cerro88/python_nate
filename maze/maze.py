@@ -38,12 +38,17 @@ while True:
 
     if direction == "w":
         my_positon[POST_Y] -= 1
+        my_positon[POST_Y] %= MAP_HEIGHT
     elif direction == "s":
         my_positon[POST_Y] += 1
+        my_positon[POST_Y] %= MAP_HEIGHT
+        
     elif direction == "a":
         my_positon[POST_X] -= 1
+        my_positon[POST_Y] %= MAP_WIDTH
     elif direction == "d":
         my_positon[POST_X] += 1
+        my_positon[POST_X] %= MAP_WIDTH
     elif direction == "q":
         break
 
