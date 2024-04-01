@@ -43,19 +43,19 @@ while True: # Inicio de un bucle infinito
     # Si el usuario presiona 'w'
     if direction == "w":
         # Mover hacia arriba reduciendo Y
-        my_positon[POST_Y] -= 1
+        my_position[POST_Y] -= 1
          # Asegurar que la posición Y está dentro de los límites del mapa
-        my_positon[POST_Y] %= MAP_HEIGHT
+        my_position[POST_Y] %= MAP_HEIGHT
     elif direction == "s":
-        my_positon[POST_Y] += 1
-        my_positon[POST_Y] %= MAP_HEIGHT
+        my_position[POST_Y] += 1
+        my_position[POST_Y] %= MAP_HEIGHT
         
     elif direction == "a":
-        my_positon[POST_X] -= 1
-        my_positon[POST_Y] %= MAP_WIDTH
+        my_position[POST_X] -= 1
+        my_position[POST_Y] %= MAP_WIDTH
     elif direction == "d":
-        my_positon[POST_X] += 1
-        my_positon[POST_X] %= MAP_WIDTH
+        my_position[POST_X] += 1
+        my_position[POST_X] %= MAP_WIDTH
     elif direction == "q":
         break
 
