@@ -8,6 +8,7 @@ MAP_HEIGHT = 15
 
 
 my_position = [3 , 3]
+
 #libreria
 #readchar nos permite leer la entrada del usuario sin necesidad de pulsar intro 
 import readchar
@@ -73,5 +74,5 @@ while True: # Inicio de un bucle infinito
 
  #programas de Python para limpiar 
     #la pantalla de la consola en sistemas operativos Windows.SE NECESITA IMPORTAR LA LIBRERÍA OS
-    #
+    
     os.system("cls")
