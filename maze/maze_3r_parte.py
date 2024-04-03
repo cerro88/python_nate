@@ -1,4 +1,6 @@
-#es esta parte dibujamos los objetos
+#en esta parte del script hacemos que cuando el usuario
+#pase por encima de un objeto este se mueva
+
 
 
 import readchar
@@ -25,6 +27,8 @@ while True:
         for coordinate_x in range(MAP_WIDTH):
 
             chard_to_draw = " "
+            #
+            object_in_cell = None
 
             #
             for map_object in map_objects:
@@ -32,11 +36,17 @@ while True:
                 if map_object[POST_X] == coordinate_x and map_object[POST_Y] == coordinate_y:
                     #
                     chard_to_draw = "*"
+                    object_in_cell = map_object
 
 
             if my_position[POST_X] == coordinate_x and my_position[POST_Y] == coordinate_y:
                 #
                 chard_to_draw = "@" 
+
+                if object_in_cell:
+                    map_objects.remove(object_in_cell)
+
+
                 #
             print(" {} ".format(chard_to_draw), end="")
         print("|")
