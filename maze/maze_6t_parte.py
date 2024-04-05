@@ -7,7 +7,7 @@ POST_Y = 1
 
 MAP_WIDTH = 20
 MAP_HEIGHT = 15
-NUM_OF_MAP_OBJECTS = 11
+NUM_OF_MAP_OBJECTS = 30
 
 my_position = [3, 3]
 tail_length = 0
