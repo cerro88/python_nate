@@ -7,7 +7,25 @@ POST_Y = 1
 
 MAP_WIDTH = 20
 MAP_HEIGHT = 15
-NUM_OF_MAP_OBJECTS = 30
+NUM_OF_MAP_OBJECTS = 11
+
+obstacle_definition = """\
+####################
+             #######
+##########         #
+               #####
+########      ######
+#                  #
+###         ########
+######      ########
+#####              #
+#         ##########
+###      ###########
+#                ###
+####            ####
+########           #
+#              #####\
+"""
 
 my_position = [3, 3]
 tail_length = 0
@@ -17,9 +35,13 @@ map_objects = []
 end_game = False
 died = False
 
+obstacle_definition = [list(row) for row in obstacle_definition.split("\n")]
+
+
 # Bucle principal
 while not end_game:
 
+    os.system("cls")
     # Generar objetos aleatorios
     while len(map_objects) < NUM_OF_MAP_OBJECTS:
         new_position = [random.randint(0, MAP_WIDTH - 1), random.randint(0, MAP_HEIGHT - 1)]
@@ -59,10 +81,15 @@ while not end_game:
 
                 if tail_in_cell: 
                    end_game = True
-                   died = True                
+                   died = True    
+
+            if obstacle_definition[coordinate_y][coordinate_x] == "#":
+                char_to_draw = "#"
+
 
             print(" {} ".format(char_to_draw), end="")
         print("|")
+
     print("+" + "-" * MAP_WIDTH * 3 + "+")
     
 
