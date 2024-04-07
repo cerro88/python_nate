@@ -5,8 +5,7 @@ import random
 POST_X = 0
 POST_Y = 1
 
-MAP_WIDTH = 20
-MAP_HEIGHT = 15
+
 NUM_OF_MAP_OBJECTS = 11
 
 obstacle_definition = """\
@@ -37,6 +36,8 @@ died = False
 
 obstacle_definition = [list(row) for row in obstacle_definition.split("\n")]
 
+MAP_WIDTH = len(obstacle_definition[0])
+MAP_HEIGHT = len(obstacle_definition)
 
 # Bucle principal
 while not end_game:
@@ -81,7 +82,9 @@ while not end_game:
 
                 if tail_in_cell: 
                    end_game = True
-                   died = True    
+                   died = True  
+
+             
 
             if obstacle_definition[coordinate_y][coordinate_x] == "#":
                 char_to_draw = "#"
@@ -95,6 +98,7 @@ while not end_game:
 
     direction = readchar.readchar()
 
+    
     # Mover la cola
     if direction in ["w", "s", "a", "d"]:
         tail.insert(0, my_position.copy())  # Añade la posición actual al inicio de la cola

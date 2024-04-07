@@ -17,6 +17,7 @@ map_objects = []
 end_game = False
 died = False
 
+
 # Bucle principal
 while not end_game:
 
