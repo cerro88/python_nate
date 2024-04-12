@@ -5,21 +5,20 @@ import random
 POST_X = 0
 POST_Y = 1
 
-
 NUM_OF_MAP_OBJECTS = 11
 
 obstacle_definition = """\
-####################
+####         #######
              #######
 ##########         #
                #####
-########      ######
+########          ##
 #                  #
-###         ########
-######      ########
+###         ###   ##
+######  #######   ##
 #####              #
-#         ##########
-###      ###########
+#         #   ######
+###      ###   #####
 #                ###
 ####            ####
 ########           #
@@ -47,9 +46,9 @@ while not end_game:
     while len(map_objects) < NUM_OF_MAP_OBJECTS:
         new_position = [random.randint(0, MAP_WIDTH - 1), random.randint(0, MAP_HEIGHT - 1)]
 
-        if new_position not in map_objects and new_position != my_position:
+        if new_position not in map_objects and new_position != my_position and \
+            obstacle_definition[new_position[POST_Y]][new_position[POST_X]] != "#":
             map_objects.append(new_position)
-
 
     print("+" + "-" * MAP_WIDTH * 3 + "+")
 
@@ -80,48 +79,42 @@ while not end_game:
                     map_objects.remove(object_in_cell)
                     tail_length += 1
 
-                if tail_in_cell: 
-                   end_game = True
-                   died = True  
-
-             
+                if tail_in_cell:
+                    end_game = True
+                    died = True
 
             if obstacle_definition[coordinate_y][coordinate_x] == "#":
                 char_to_draw = "#"
 
-
             print(" {} ".format(char_to_draw), end="")
         print("|")
 
-    print("+" + "-" * MAP_WIDTH * 2 + "+")
-    
+    print("+" + "-" * MAP_WIDTH * 3 + "+")
 
     direction = readchar.readchar()
-
-    
-    # Mover la cola
-    if direction in ["w", "s", "a", "d"]:
-        tail.insert(0, my_position.copy())  # Añade la posición actual al inicio de la cola
-        if len(tail) > tail_length:
-            tail.pop()  # Elimina el exceso en la cola para mantener el tamaño correcto
+    new_position = None  # Inicializar new_position antes de asignar un valor
 
     # Actualizar posición
     if direction == "w":
-        my_position[POST_Y] -= 1
-        my_position[POST_Y] %= MAP_HEIGHT
+        new_position = [my_position[POST_X], (my_position[POST_Y] - 1) % MAP_HEIGHT]
+
     elif direction == "s":
-        my_position[POST_Y] += 1
-        my_position[POST_Y] %= MAP_HEIGHT
+        new_position = [my_position[POST_X], (my_position[POST_Y] + 1) % MAP_HEIGHT]
+
     elif direction == "a":
-        my_position[POST_X] -= 1
-        my_position[POST_X] %= MAP_WIDTH
+        new_position = [(my_position[POST_X] - 1) % MAP_WIDTH, my_position[POST_Y]]
+
     elif direction == "d":
-        my_position[POST_X] += 1
-        my_position[POST_X] %= MAP_WIDTH
+        new_position = [(my_position[POST_X] + 1) % MAP_WIDTH, my_position[POST_Y]]
+
     elif direction == "q":
         end_game = True
 
-    os.system("cls")
+    if new_position:
+        if obstacle_definition[new_position[POST_Y]][new_position[POST_X]] != "#":
+            tail.insert(0, my_position.copy())
+            tail = tail[:tail_length]
+            my_position = new_position
 
 if died:
     print("¡Has muerto!")
