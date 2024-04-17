@@ -1,6 +1,7 @@
 import readchar
 import os
 import random
+#funciones que permiten manejar la entrada y salida en Windows
 import msvcrt
 
 POST_X = 0
@@ -12,7 +13,7 @@ MAP_HEIGHT = 30
 my_position = [3, 3]
 
 end_game = False
-died = False
+
 
 #diccionario de trainers
 trainers = {
@@ -38,31 +39,32 @@ while not end_game:
 
             for coordinate_x in range(MAP_WIDTH):
 
-                char_to_draw = " "
+                draw = " "
                 trainer_in_cell = None
 
                 # Verificar si hay un entrenador en esta celda
-                for map_trainer in trainers:
-                    if map_trainer[POST_X] == coordinate_x and map_trainer[POST_Y] == coordinate_y:
-                        if map_trainer in visited_trainers:
+                for trainer in trainers:
+                    if trainer[POST_X] == coordinate_x and trainer[POST_Y] == coordinate_y:
+                        if trainer in visited_trainers:
                             # Indica que el entrenador ya ha sido visitado
-                            char_to_draw = "V"  
+                            draw = "V"  
                         else:
-                            char_to_draw = "*"
-                            trainer_in_cell = map_trainer
+                            draw = "*"
+                            #si el entrenador no ha sido visitado se asigna a esa celda
+                            trainer_in_cell = trainer
 
                             
 
 
                 # Verificar si la posición actual es la posición del jugador
                 if my_position[POST_X] == coordinate_x and my_position[POST_Y] == coordinate_y:
-                    char_to_draw = "&"
+                    draw = "&"
 
                     if trainer_in_cell and trainer_in_cell not in visited_trainers:
                         # Agregar el entrenador a la lista de visitados
                         visited_trainers.append(trainer_in_cell)  
 
-                print(" {} ".format(char_to_draw), end="")
+                print(" {} ".format(draw), end="")
             print("|")
 
         # Se imprime el borde derecho del tablero
@@ -116,7 +118,7 @@ while not end_game:
                     vida_squirtle -= 11
                 print("La vida de Pikachu es: {}, la vida de Squirtle es: {}".format("#" * vida_pikachu, "#" * vida_squirtle))
                 
-                # Espera a que se presione cualquier tecla
+                # Espera a que se presione cualquier tecla 
                 msvcrt.getch()
                 # Limpiar la pantalla
                 os.system("cls" if os.name == "nt" else "clear")  
