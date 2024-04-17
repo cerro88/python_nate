@@ -182,7 +182,7 @@ while not end_game:
                 # Espera a que se presione cualquier tecla
                 msvcrt.getch()
                 # Limpiar la pantalla
-                os.system("cls" if os.name == "nt" else "clear")  
+                os.system("cls")  
                 
                 print("Turno squirtle")
                 print("Selecciona tu ataque:")
@@ -244,7 +244,7 @@ while not end_game:
                 # Espera a que se presione cualquier tecla
                 msvcrt.getch()
                 # Limpiar la pantalla
-                os.system("cls" if os.name == "nt" else "clear")  
+                os.system("cls")  
                 
                 print("Turno squirtle")
                 print("Selecciona tu ataque:")
