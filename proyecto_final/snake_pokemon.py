@@ -13,6 +13,7 @@ MAP_HEIGHT = 30
 my_position = [3, 3]
 
 end_game = False
+game_over = False
 
 
 #diccionario de trainers
@@ -159,6 +160,9 @@ while not end_game:
                 print("¡Pikachu gana!")
             else:
                 print("¡Squirtle gana!")
+        if game_over:
+            print("Game Over: Squirtle ha sido derrotado.")
+            break  # Rompe el bucle principal y termina el juego
                 
 
         elif tuple(my_position) == (8, 3):
@@ -222,6 +226,9 @@ while not end_game:
                 print("¡Blastoise gana!")
             else:
                 print("¡Squirtle gana!")
+        if game_over:
+            print("Game Over: Squirtle ha sido derrotado.")
+            break  # Rompe el bucle principal y termina el juego
 
         elif tuple(my_position) == (10, 16):
             # Lógica del combate para el entrenador en la posición (8, 3)
@@ -284,6 +291,10 @@ while not end_game:
                 print("¡Charmander gana!")
             else:
                 print("¡Squirtle gana!")
+
+        if game_over:
+            print("Game Over: Squirtle ha sido derrotado.")
+            break  # Rompe el bucle principal y termina el juego
         elif tuple(my_position) == (20, 14):
             # Lógica del combate para el entrenador en la posición (8, 3)
             print("¡Este es el entrenador en la posición (8, 3)!")
@@ -347,4 +358,8 @@ while not end_game:
 
             else:
                 print("¡Squirtle gana!")
+
+        if game_over:
+            print("Game Over: Squirtle ha sido derrotado.")
+            break  # Rompe el bucle principal y termina el juego
 
