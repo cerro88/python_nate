@@ -1,3 +1,14 @@
+#¡FINAL BOSS!
+#
+#El objetivo de este ejercicio final es crear un desafío Pokémon (o lo que más os guste/motive). 
+#Cada uno de los objetos será un entrenador pokémon, cuando nos situamos encima de una casilla que contiene un objeto, 
+#se lanzará un combate pokémon para luchar contra el entrenador rival. Tenemos que ganar el combate para que el entrenador 
+#desaparezca de nuestra lista e ir sucesivamente ganando a cada entrenador (objeto). Cuando hayamos vencido, se terminará el juego.
+#
+#Nuestro pokémon será Pikachu y cada entrenador tendrá un solo pokémon a libre elección y con los ataques que queráis.
+
+
+
 import readchar
 import os
 import random
@@ -27,7 +38,7 @@ trainers = {
 #Lista para almacenar las coordenadas de los entrenadores visitados
 visited_trainers = []
 
-while not end_game:
+while not end_game and not game_over:
 
     while True:
 
@@ -157,12 +168,13 @@ while not end_game:
 
             # Determinar el resultado del combate
             if vida_pikachu > vida_squirtle:
-                print("¡Pikachu gana!")
+                game_over = True
             else:
                 print("¡Squirtle gana!")
         if game_over:
             print("Game Over: Squirtle ha sido derrotado.")
-            break  # Rompe el bucle principal y termina el juego
+            #rompe el bucle principal y termina el juego
+            break  
                 
 
         elif tuple(my_position) == (8, 3):
@@ -219,16 +231,17 @@ while not end_game:
                 msvcrt.getch()
 
                 # Limpiar la pantalla
-                os.system("cls" if os.name == "nt" else "clear")  # Limpiar la pantalla
+                os.system("cls" if os.name == "nt" else "clear")  
 
             # Determinar el resultado del combate
             if vida_Blastoise > vida_squirtle:
-                print("¡Blastoise gana!")
+                game_over = True
             else:
                 print("¡Squirtle gana!")
         if game_over:
             print("Game Over: Squirtle ha sido derrotado.")
-            break  # Rompe el bucle principal y termina el juego
+            #rompe el bucle principal y termina el juego
+            break  
 
         elif tuple(my_position) == (10, 16):
             # Lógica del combate para el entrenador en la posición (8, 3)
@@ -284,17 +297,18 @@ while not end_game:
                 msvcrt.getch()
 
                 # Limpiar la pantalla
-                os.system("cls" if os.name == "nt" else "clear")  # Limpiar la pantalla
+                os.system("cls" if os.name == "nt" else "clear")  
 
             # Determinar el resultado del combate
             if vida_Charmander > vida_squirtle:
-                print("¡Charmander gana!")
+                game_over = True
             else:
                 print("¡Squirtle gana!")
 
         if game_over:
             print("Game Over: Squirtle ha sido derrotado.")
-            break  # Rompe el bucle principal y termina el juego
+            break  
+
         elif tuple(my_position) == (20, 14):
             # Lógica del combate para el entrenador en la posición (8, 3)
             print("¡Este es el entrenador en la posición (8, 3)!")
@@ -353,13 +367,12 @@ while not end_game:
 
             # Determinar el resultado del combate
             if vida_Bulbasaur > vida_squirtle:
-                print("¡Bulbasaur gana!")
-                died = True
+               game_over = True
 
             else:
                 print("¡Squirtle gana!")
 
         if game_over:
             print("Game Over: Squirtle ha sido derrotado.")
-            break  # Rompe el bucle principal y termina el juego
+            break  
 
