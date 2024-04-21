@@ -1,22 +1,60 @@
 /*CSS GENERAL DE ELEMENTOS*/
 
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
 body {
     background-color: #222;
     color: white;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    font-weight: 200;
+}
+
+h1 {
+    font-size: 42px;
+}
+
+h2 {
+    font-size: 36px;
+    line-height: 36px;
 }
 
 h3 {
     color: #999;
+    font-size: 18px;
+    font-weight: 280px;
 }
 
 
-/*CSS IDS Y CLASS*/
+/*CSS #IDS Y .CLASS */
 
 .hastag {
     color: #e0a211
 }
 
+.section {
+    /*css padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 10px;
+    padding-bottom: 10px;*/
+    padding: 10px 100px 10px 100px;
+}
+
 #experiencia {
     background-color: white;
     color: #222;
+}
+
+#porfolio {
+    border-top: 1px solid #e0a211;
+}
+
+#inicio {
+    background-image: url(../img/jupiter-southern-hemisphere-juno-spacecraft-nasa-4k.jpg);
+    min-height: 280px;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
