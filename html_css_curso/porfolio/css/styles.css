@@ -1,0 +1,22 @@
+/*CSS GENERAL DE ELEMENTOS*/
+
+body {
+    background-color: #222;
+    color: white;
+}
+
+h3 {
+    color: #999;
+}
+
+
+/*CSS IDS Y CLASS*/
+
+.hastag {
+    color: #e0a211
+}
+
+#experiencia {
+    background-color: white;
+    color: #222;
+}
