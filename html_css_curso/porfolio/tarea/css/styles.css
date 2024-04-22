@@ -1,0 +1,66 @@
+/* CSS GENERICOS */
+
+body {
+    margin: 0px;
+    padding: 0px;
+    max-width: 780px;
+    font-family: "Jersey 15", sans-serif;
+}
+
+img {
+    border-radius: 0;
+}
+
+
+/* ID'S Y CLASES */
+
+.section {
+    display: flex;
+    border-radius: 10px 10px 0px 0;
+    border: 1px solid #000;
+    background-color: antiquewhite;
+}
+
+.information {
+    text-align: center;
+}
+
+#text {
+    text-align: center;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.icons {
+    margin-top: 60px;
+    text-align: center;
+}
+
+.icons>img {
+    margin: 0px 30px 0px 30px;
+}
+
+.foto {
+    margin: 10px 10px;
+}
+
+.table td.cells {
+    padding: 8px;
+    text-align: left;
+}
+
+.table {
+    display: flex;
+    margin-top: 1px;
+    border: 1px solid #000;
+    background-color: burlywood;
+}
+
+#git {
+    margin: 50px;
+}
+
+#username {
+    margin-left: 250px;
+    margin-top: 30px;
+}
