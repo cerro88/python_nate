@@ -4,6 +4,7 @@ body {
     margin: 0px;
     padding: 0px;
     max-width: 780px;
+    min-width: auto;
     font-family: "Jersey 15", sans-serif;
 }
 
@@ -36,7 +37,7 @@ img {
     text-align: center;
 }
 
-.icons>img {
+.icons>a>img {
     margin: 0px 30px 0px 30px;
 }
 
@@ -63,4 +64,44 @@ img {
 #username {
     margin-left: 250px;
     margin-top: 30px;
+}
+
+#DNI {
+    margin-left: 300px;
+}
+
+
+/* media query para pantallas más pequeñas que 500 */
+
+@media (max-width: 500px) {
+    #username {
+        margin-left: 10px;
+        margin-top: 30px;
+        font-size: 15px;
+        margin-right: 5px;
+    }
+    #DNI {
+        margin-left: 10px;
+        font-size: 20px;
+        margin-right: 5px;
+    }
+    img {
+        border-radius: 0;
+    }
+    .information {
+        text-align: start;
+        font-size: 10px;
+    }
+    #text {
+        text-align: start;
+        margin-left: 5px;
+        font-size: 15px;
+    }
+    .foto {
+        width: 100px;
+    }
+    .icons {
+        margin-top: 20px;
+        text-align: center;
+    }
 }
