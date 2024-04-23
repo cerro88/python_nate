@@ -8,9 +8,7 @@
 body {
     background-color: #222;
     color: white;
-    font-family: "Poppins", sans-serif;
-    font-size: 14px;
-    font-weight: 200;
+    font: 200 14px "Poppins", sans-serif;
 }
 
 h1 {
