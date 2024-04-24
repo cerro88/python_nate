@@ -1,3 +1,12 @@
+#¡FINAL BOSS!
+#
+#El objetivo de este ejercicio final es crear un desafío Pokémon (o lo que más os guste/motive). 
+#Cada uno de los objetos será un entrenador pokémon, cuando nos situamos encima de una casilla que contiene un objeto, 
+#se lanzará un combate pokémon para luchar contra el entrenador rival. Tenemos que ganar el combate para que el entrenador 
+#desaparezca de nuestra lista e ir sucesivamente ganando a cada entrenador (objeto). Cuando hayamos vencido, se terminará el juego.
+#
+#Nuestro pokémon será Pikachu y cada entrenador tendrá un solo pokémon a libre elección y con los ataques que queráis.
+
 
 #biblioteca readchar para leer caracteres 
 #de entrada sin necesidad de presionar Enter.
@@ -30,10 +39,10 @@ game_over = False
 
 #diccionario de trainers y sus coordenadas
 trainers = {
-    (4, 6): "entrenador_1",  
-    (5, 27): "entrenador_2",
-    (10, 16): "entrenador_3",
-    (20, 14): "entrenador_4"
+    (4, 6): {"name": "entrenador_1", "pokemon": "Squirtle", "vida": 90, "ataques": {"Placaje": 10, "Pistola Agua": 15, "Burbuja": 8}},
+    (5, 27): {"name": "entrenador_2", "pokemon": "Charmander", "vida": 85, "ataques": {"Lanzallamas": 18, "Ascuas": 12}},
+    (10, 16): {"name": "entrenador_3", "pokemon": "Bulbasaur", "vida": 90, "ataques": {"Latigazo": 13, "Hoja Afilada": 16}},
+    (20, 14): {"name": "entrenador_4", "pokemon": "Jigglypuff", "vida": 95, "ataques": {"Canto": 0, "Golpe Cuerpo": 10}}
 }
 #Lista para almacenar las coordenadas de los 
 #entrenadores visitados
@@ -127,92 +136,69 @@ while not end_game and not game_over:
             #Salir del bucle, lo que puede significar pausar o terminar el juego
             break
 
-        # Verifica si la posición actual del jugador coincide con la de algún entrenador
         if tuple(my_position) in trainers:
-            #Recupera el nombre del entrenador en la posición actual
-            trainer_name = trainers[tuple(my_position)]
-            #Informa al jugador que ha encontrado un entrenador y se prepara para el combate
-            print("¡Has encontrado un entrenador ({})! ¡Prepárate para el combate!".format(trainer_name))
-            #Pausa el juego esperando que el jugador presione Enter para continuar
+            trainer = trainers[tuple(my_position)]
+            print(f"¡Has encontrado a {trainer['name']} con su Pokémon {trainer['pokemon']}! ¡Prepárate para el combate!")
             input("Presiona Enter para continuar...")
-            #Anuncia el inicio del combate contra el entrenador encontrado
-            print("¡Combate iniciado contra {}!".format(trainer_name))
 
-        #Compara si la posición actual del jugador es específicamente la del primer entrenador definido
-        if tuple(my_position) == (4, 6):
-            #Mensaje específico para cuando el jugador encuentra al entrenador en la posición (4, 6)
-            print("¡Este es el entrenador en la posición (4, 6)!")
+            # Inicia variables de vida para el combate
+            pikachu_life = 90  # Vida inicial de Pikachu
+            opponent_life = trainer['vida']  # Vida inicial del Pokémon oponente
 
-            #Inicia variables de vida para un posible sistema de combate
-            vida_pikachu = 90  # Vida inicial de Pikachu
-            vida_squirtle = 90  # Vida inicial de Squirtle
+            while pikachu_life > 0 and opponent_life > 0:
+                # Turno del Pokémon oponente
+                print(f"Turno de {trainer['pokemon']}")
+                ataque_oponente = random.choice(list(trainer['ataques'].keys()))
+                dano = trainer['ataques'][ataque_oponente]
+                pikachu_life -= dano
+                print(f"{trainer['pokemon']} ataca con {ataque_oponente} causando {dano} puntos de daño")
 
-            #Mientras la vida de ambos sea mayor a 0 se seguirá ejecutando
-            while vida_pikachu > 0 and vida_squirtle > 0:
-                #Turnos de combate
-                print("Turno Squirtle")
-                #Squirtle elige aleatoriamente entre dos ataques
-                ataque_squirtle = random.randint(1, 2)  
-                if ataque_squirtle == 1:
-                    print("Squirtle ataca con Placaje")
-                    #Reduce la vida de Pikachu
-                    vida_pikachu -= 10  
-                else:
-                    print("Squirtle ataca con Pistola de Agua")
-                    #Reduce la vida de Pikachu de forma más severa
-                    vida_pikachu -= 11  
-
-                #Muestra las barras de vida de ambos personajes usando el símbolo '#'
-                print("La vida de Squirtle es: {}, la vida de Pikachu es: {}".format("#" * vida_squirtle, "#" * vida_pikachu))
-                
-                #Espera a que se presione cualquier tecla
+                # Mostrar la vida actualizada
+                print(f"Vida de {trainer['pokemon']}: {'#' * (opponent_life // 10)}, vida de Pikachu: {'#' * (pikachu_life // 10)}")
                 msvcrt.getch()
-
-                #Limpiar la pantalla para la próxima ronda
                 os.system("cls")
 
-                #Turno de Pikachu
-                print("Turno Pikachu")
+                # Turno de Pikachu
+                print("Turno de Pikachu")
                 print("Selecciona tu ataque:")
                 print("1. Bola Voltio")
-                print("2. Onda Tueno")
-                
-                while True:
-                    #Espera entrada del jugador
-                    choice = msvcrt.getch().decode()  
-                    if choice in ["1", "2"]:
-                        if choice == "1":
-                            #Daño por Bola Voltio
-                            vida_squirtle -= 10  
-                            print("Pikachu ataca con Bola Voltio")
-                        elif choice == "2":
-                            #Daño por Onda Tueno
-                            vida_squirtle -= 12  
-                            print("Pikachu ataca con Onda Tueno")
-                        break
-                    else:
-                        #Mensaje de error si la opción no es válida
-                        print("Opción no válida. Por favor, selecciona un número del 1 al 2.")  
-                
-                #Muestra las barras de vida después del turno de Pikachu
-                print("La vida de Squirtle es: {}, la vida de Pikachu es: {}".format("#" * vida_squirtle, "#" * vida_pikachu))
-                
-                #Espera a que se presione cualquier tecla
+                print("2. Onda Trueno")
+                print("3. Chispa")
+                choice = msvcrt.getch().decode()
+
+                if choice == "1":
+                    opponent_life -= 10
+                    print("Pikachu ataca con Bola Voltio")
+                elif choice == "2":
+                    opponent_life -= 12
+                    print("Pikachu ataca con Onda Trueno")
+                elif choice == "3":
+                    opponent_life -= 5
+                    print("Pikachu ataca con Chispa")
+                else:
+                    print("Opción no válida. Por favor, selecciona un número del 1 al 3.")
+
+                # Mostrar la vida actualizada
+                print(f"Vida de {trainer['pokemon']}: {'#' * (opponent_life // 10)}, vida de Pikachu: {'#' * (pikachu_life // 10)}")
                 msvcrt.getch()
+                os.system
 
-                #Limpiar la pantalla para la próxima ronda
-                os.system("cls")
+                # Determinar el resultado del combate
+                if pikachu_life <= 0:
+                    print("¡El oponente gana!")
+                    # Marca el juego como terminado si el oponente gana
+                    game_over = True
+                    # Muestra mensaje de Game Over y termina el juego
+                    print("Game Over: Pikachu ha sido derrotado.")
+                elif opponent_life <= 0:
+                    print("¡Has ganado!")
+                    # Elimina al entrenador derrotado del mapa
+                    del trainers[tuple(my_position)]
+                    # Mensaje de victoria específico
+                    print(f"¡Has derrotado a {trainer['name']} y su {trainer['pokemon']}!")
 
-            #Determinar el resultado del combate
-            if vida_squirtle > vida_pikachu:
-                print("¡Squirtle gana!")
-                #Marca el juego como terminado si Squirtle gana
-                game_over = True  
-            else:
-                print("Has ganado ")
-
-            #Si el juego termina, muestra mensaje de Game Over y termina el juego
-            if game_over:
-                print("Game Over: Pikachu ha sido derrotado.")
-                break  # Termina el bucle principal y finaliza el juego
+                # Verifica si el juego debe terminar
+                if game_over:
+                    print("El juego ha terminado. Gracias por jugar.")
+                    break  # Termina el bucle principal y finaliza el juegoo
             
