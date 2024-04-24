@@ -82,26 +82,39 @@ while not end_game and not game_over:
         # Se imprime el borde derecho del tablero
         print("+" + "-" * MAP_WIDTH * 3 + "+")
 
+        
         direction = readchar.readchar()
         
         new_position = None
 
-        # Si el usuario presiona 'w'
+        #Si el usuario presiona 'w'
         if direction == "w":
             # Mover hacia arriba reduciendo Y
             my_position[POST_Y] -= 1
-            # Asegurar que la posición Y está dentro de los límites del mapa
+            # Asegurar que la posición Y está dentro de los límites del mapa, usando módulo para ciclar al otro extremo si necesario
             my_position[POST_Y] %= MAP_HEIGHT
+        #Si el usuario presiona 's'
         elif direction == "s":
+            # Mover hacia abajo aumentando Y
             my_position[POST_Y] += 1
+            # Asegurar que la posición Y está dentro de los límites del mapa, similar al movimiento hacia arriba
             my_position[POST_Y] %= MAP_HEIGHT
+
+        #Si el usuario presiona 'a'
         elif direction == "a":
+            #Mover hacia la izquierda reduciendo X
             my_position[POST_X] -= 1
+            #Asegurar que la posición X está dentro de los límites del mapa
             my_position[POST_X] %= MAP_WIDTH
+        #Si el usuario presiona 'd'
         elif direction == "d":
+            #Mover hacia la derecha aumentando X
             my_position[POST_X] += 1
+            #Asegurar que la posición X está dentro de los límites del mapa
             my_position[POST_X] %= MAP_WIDTH
+        #Si el usuario presiona 'q'
         elif direction == "q":
+            #Salir del bucle, que puede significar pausar o terminar el juego
             break
 
         if tuple(my_position) in trainers:
@@ -111,15 +124,15 @@ while not end_game and not game_over:
             print("¡Combate iniciado contra {}!".format(trainer_name))
 
         if tuple(my_position) == (4, 6):
-            # Lógica del combate para el entrenador en la posición (4, 6)
+            #Lógica del combate para el entrenador en la posición (4, 6)
             print("¡Este es el entrenador en la posición (4, 6)!")
-            # Se inicia una puntuación inicial
+            #Se inicia una puntuación inicial
             vida_pikachu = 80
             vida_squirtle = 90
 
-            # Mientras la vida de ambos sea mayor a 0 se seguirá ejecutando
+            #Mientras la vida de ambos sea mayor a 0 se seguirá ejecutando
             while vida_pikachu > 0 and vida_squirtle > 0:
-                # Turnos de combate
+                #Turnos de combate
                 print("Turno pikachu")
                 ataque_pikachu = random.randint(1, 2)
                 if ataque_pikachu == 1:
@@ -130,9 +143,9 @@ while not end_game and not game_over:
                     vida_squirtle -= 11
                 print("La vida de Pikachu es: {}, la vida de Squirtle es: {}".format("#" * vida_pikachu, "#" * vida_squirtle))
                 
-                # Espera a que se presione cualquier tecla 
+                #Espera a que se presione cualquier tecla 
                 msvcrt.getch()
-                # Limpiar la pantalla
+                #Limpiar la pantalla
                 os.system("cls" if os.name == "nt" else "clear")  
                 
                 print("Turno squirtle")
@@ -160,13 +173,13 @@ while not end_game and not game_over:
                 
                 print("La vida de Pikachu es: {}, la vida de Squirtle es: {}".format("#" * vida_pikachu, "#" * vida_squirtle))
                 
-                # Espera a que se presione cualquier tecla
+                #Espera a que se presione cualquier tecla
                 msvcrt.getch()
 
-                # Limpiar la pantalla
+                #Limpiar la pantalla
                 os.system("cls" if os.name == "nt" else "clear")  # Limpiar la pantalla
 
-            # Determinar el resultado del combate
+            #Determinar el resultado del combate
             if vida_pikachu > vida_squirtle:
                 game_over = True
             else:
@@ -178,15 +191,15 @@ while not end_game and not game_over:
                 
 
         elif tuple(my_position) == (8, 3):
-            # Lógica del combate para el entrenador en la posición (8, 3)
+            #Lógica del combate para el entrenador en la posición (8, 3)
             print("¡Este es el entrenador en la posición (8, 3)!")
-            # Se inicia una puntuación inicial
+            #Se inicia una puntuación inicial
             vida_Blastoise = 80
             vida_squirtle = 90
 
-            # Mientras la vida de ambos sea mayor a 0 se seguirá ejecutando
+            #Mientras la vida de ambos sea mayor a 0 se seguirá ejecutando
             while vida_Blastoise > 0 and vida_squirtle > 0:
-                # Turnos de combate
+                #Turnos de combate
                 print("Turno Blastoise")
                 ataque_Blastoise = random.randint(1, 2)
                 if ataque_Blastoise == 1:
@@ -197,9 +210,9 @@ while not end_game and not game_over:
                     vida_squirtle -= 9
                 print("La vida de Blastoise es: {}, la vida de Squirtle es: {}".format("#" * vida_Blastoise, "#" * vida_squirtle))
                 
-                # Espera a que se presione cualquier tecla
+                #Espera a que se presione cualquier tecla
                 msvcrt.getch()
-                # Limpiar la pantalla
+                #Limpiar la pantalla
                 os.system("cls")  
                 
                 print("Turno squirtle")
@@ -227,13 +240,13 @@ while not end_game and not game_over:
                 
                 print("La vida de Blastoise es: {}, la vida de Squirtle es: {}".format("#" * vida_Blastoise, "#" * vida_squirtle))
                 
-                # Espera a que se presione cualquier tecla
+                #Espera a que se presione cualquier tecla
                 msvcrt.getch()
 
-                # Limpiar la pantalla
+                #Limpiar la pantalla
                 os.system("cls" if os.name == "nt" else "clear")  
 
-            # Determinar el resultado del combate
+            #Determinar el resultado del combate
             if vida_Blastoise > vida_squirtle:
                 game_over = True
             else:
@@ -244,15 +257,15 @@ while not end_game and not game_over:
             break  
 
         elif tuple(my_position) == (10, 16):
-            # Lógica del combate para el entrenador en la posición (8, 3)
+            #Lógica del combate para el entrenador en la posición (8, 3)
             print("¡Este es el entrenador en la posición (8, 3)!")
-            # Se inicia una puntuación inicial
+            #Se inicia una puntuación inicial
             vida_Charmander = 80
             vida_squirtle = 90
 
-            # Mientras la vida de ambos sea mayor a 0 se seguirá ejecutando
+            #Mientras la vida de ambos sea mayor a 0 se seguirá ejecutando
             while vida_Charmander > 0 and vida_squirtle > 0:
-                # Turnos de combate
+                #Turnos de combate
                 print("Turno Charmander")
                 ataque_Charmander = random.randint(1, 2)
                 if ataque_Charmander == 1:
@@ -263,9 +276,9 @@ while not end_game and not game_over:
                     vida_squirtle -= 14
                 print("La vida de Charmander es: {}, la vida de Squirtle es: {}".format("#" * vida_Charmander, "#" * vida_squirtle))
                 
-                # Espera a que se presione cualquier tecla
+                #Espera a que se presione cualquier tecla
                 msvcrt.getch()
-                # Limpiar la pantalla
+                #Limpiar la pantalla
                 os.system("cls")  
                 
                 print("Turno squirtle")
@@ -293,13 +306,13 @@ while not end_game and not game_over:
                 
                 print("La vida de Charmander es: {}, la vida de Squirtle es: {}".format("#" * vida_Charmander, "#" * vida_squirtle))
                 
-                # Espera a que se presione cualquier tecla
+                #Espera a que se presione cualquier tecla
                 msvcrt.getch()
 
-                # Limpiar la pantalla
-                os.system("cls" if os.name == "nt" else "clear")  
+                #Limpiar la pantalla
+                os.system("cls")  
 
-            # Determinar el resultado del combate
+            #Determinar el resultado del combate
             if vida_Charmander > vida_squirtle:
                 game_over = True
             else:
