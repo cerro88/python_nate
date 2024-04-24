@@ -215,3 +215,4 @@ while not end_game and not game_over:
             if game_over:
                 print("Game Over: Pikachu ha sido derrotado.")
                 break  # Termina el bucle principal y finaliza el juego
+            
